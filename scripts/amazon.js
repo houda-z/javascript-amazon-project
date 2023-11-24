@@ -24,7 +24,7 @@ productsHtml += `<div class="product-container">
 </div>
 
 <div class="product-price">
-  $${formatCurrency(product.priceCents / 100)}
+  $${formatCurrency(product.priceCents)}
 </div>
 
 <div class="product-quantity-container">
