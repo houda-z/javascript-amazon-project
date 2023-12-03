@@ -68,6 +68,8 @@ document.querySelector('.js-products-grid')
    document.querySelector('.js-cart-quantity')
   .innerHTML = cartQuantity;
   }
+  
+  updateCartQuantity();
 
   function addedproduct (productId) {
   let addProduct = false;
@@ -89,8 +91,7 @@ document.querySelectorAll('.js-add-to-cart')
   const productId = button.dataset.productId;
   addToCart (productId);
   updateCartQuantity ();
-  addedproduct (productId)
-  
+  addedproduct (productId);
   });
 });
 
