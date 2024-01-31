@@ -2,22 +2,25 @@ import { cart } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import formatCurrency from "../utils/money.js";
+import { quantityOfItems } from "./checkoutHeader.js";
 
 export function renderPaymentSummary() {
   let productPriceCents = 0;
   let shippingPriceCents = 0;
-  let cartQuantity = 0;
+  
 
   cart.forEach((cartItem) => {
-   cartQuantity += cartItem.quantity;
+   
 
    const product = getProduct(cartItem.productId);
 
-   productPriceCents +=product.priceCents * cartItem.quantity;
+   productPriceCents += product.priceCents * cartItem.quantity;
    
    const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
    shippingPriceCents += deliveryOption.priceCents;
   });
+  const cartQuantity = quantityOfItems();
+
   const totalBeforeTaxtCents = productPriceCents + shippingPriceCents;
   const taxtCents = totalBeforeTaxtCents * 0.1;
   const totalCents = totalBeforeTaxtCents + taxtCents;
